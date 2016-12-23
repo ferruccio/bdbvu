@@ -48,7 +48,7 @@ class dbkey
 {
 public:
     QString             display;    // what is displayed to user
-    std::vector<char>   key;        // actual db key
+    QString data;
 };
 
 //

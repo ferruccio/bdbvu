@@ -75,8 +75,12 @@ static QString getString(void *buf, int len)
 {
     char *p = static_cast<char *>(buf);
     QString s;
-    while (len--)
-        s.append(QChar(*p++));
+    while (len--) {
+        // Do not append ending NULL character!
+        if(!(len == 0 && *p == '\0')) {
+            s.append(QChar(*p++));
+        }
+    }
     return s;
 }
 
@@ -127,7 +131,7 @@ void database::closesubdb()
 static QString makeVisible(const QString& s) {
     QString r;
     foreach (QChar c, s) {
-        if (c < QChar(' ') || c > QChar('~'))
+        if (c != QChar('\n') && (c < QChar(' ') || c > QChar('~')))
             r.append(QString("\\%1").arg(c.toAscii() & 0xff, 2, 16, QChar('0')));
         else if (c == QChar('\\'))
             r.append("\\\\");
@@ -160,13 +164,13 @@ void database::buildKeyList()
     Dbt key, data;
     while (cursor->get(&key, &data, DB_IGNORE_LEASE | DB_NEXT) != DB_NOTFOUND) {
         dbkey k;
-        char *src = static_cast<char *>(key.get_data());
-        std::copy(src, src+key.get_size(), std::back_inserter(k.key));
         if (t == DB_RECNO || t == DB_QUEUE) {
-            k.display = QString("%1").arg(*reinterpret_cast<int *>(&k.key[0]));
+            char *src = static_cast<char *>(key.get_data());
+            k.display = QString("%1").arg(*reinterpret_cast<int *>(&src[0]));
         } else {
             k.display = makeVisible(getString(key.get_data(), key.get_size()));
         }
+        k.data = getString(data.get_data(), data.get_size());
         keylist.push_back(k);
     }
 }
@@ -178,8 +182,5 @@ QString database::getRecord(int index)
 {
     if (index < 0 || index >= keylist.size())
         return QString("-- bad index: %1").arg(index);
-    Dbt key(&keylist[index].key[0], keylist[index].key.size());
-    Dbt data;
-    sdb->get(0, &key, &data, 0);
-    return makeVisible(getString(data.get_data(), data.get_size()));
+    return makeVisible(keylist[index].data);
 }
