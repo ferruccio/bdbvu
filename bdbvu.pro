@@ -38,3 +38,8 @@ win32 {
     INCLUDEPATH += "C:\Program Files\Oracle\Berkeley DB 4.8.26\include"
     LIBS += "C:\Program Files\Oracle\Berkeley DB 4.8.26\lib\libdb48.lib"
 }
+
+# Platform specific settings for Linux
+unix {
+    LIBS += -ldb_cxx
+}
