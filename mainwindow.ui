@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>291</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,10 +51,13 @@
         <item>
          <widget class="QComboBox" name="databaseSelector">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
           </property>
          </widget>
         </item>
@@ -68,7 +71,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
+            <width>20</width>
             <height>20</height>
            </size>
           </property>
@@ -94,7 +97,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
+            <width>20</width>
             <height>20</height>
            </size>
           </property>
@@ -102,16 +105,16 @@
         </item>
        </layout>
       </item>
-      <item>
-       <widget class="QSplitter" name="splitter">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <widget class="QListWidget" name="listWidget"/>
-        <widget class="QTextBrowser" name="textBrowser"/>
-       </widget>
-      </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QTextBrowser" name="textBrowser"/>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -120,8 +123,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>582</width>
-     <height>22</height>
+     <width>1000</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
