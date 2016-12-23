@@ -27,10 +27,14 @@ FORMS += mainwindow.ui
 DEFINES += HAVE_CXX_STDHEADERS
 
 # environment specific settings (OS X)
-#INCLUDEPATH += /usr/local/BerkeleyDB.4.8/include
-#LIBS += /usr/local/BerkeleyDB.4.8/lib/libdb.a
-#LIBS += /usr/local/BerkeleyDB.4.8/lib/libdb_cxx.a
+osx {
+    INCLUDEPATH += /usr/local/BerkeleyDB.4.8/include
+    LIBS += /usr/local/BerkeleyDB.4.8/lib/libdb.a
+    LIBS += /usr/local/BerkeleyDB.4.8/lib/libdb_cxx.a
+}
 
 #environment specific settings (Windows)
-INCLUDEPATH += "C:\Program Files\Oracle\Berkeley DB 4.8.26\include"
-LIBS += "C:\Program Files\Oracle\Berkeley DB 4.8.26\lib\libdb48.lib"
+win32 {
+    INCLUDEPATH += "C:\Program Files\Oracle\Berkeley DB 4.8.26\include"
+    LIBS += "C:\Program Files\Oracle\Berkeley DB 4.8.26\lib\libdb48.lib"
+}
