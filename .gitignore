@@ -1,0 +1,5 @@
+Makefile
+bdbvu
+moc_mainwindow.cpp
+ui_mainwindow.h
+*.o
