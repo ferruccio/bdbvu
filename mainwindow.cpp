@@ -103,5 +103,7 @@ void MainWindow::selectDatabase(const QString& dbname) {
 void MainWindow::selectKey(int index)
 {
     ui->textBrowser->clear();
-    ui->textBrowser->append(db.getRecord(index));
+    if (index != -1) {
+        ui->textBrowser->append(db.getRecord(index));
+    }
 }
