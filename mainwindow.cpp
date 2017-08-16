@@ -68,7 +68,7 @@ void MainWindow::openFile(QString filename)
 {
     db.close();
     try {
-        db.open(filename.toAscii());
+        db.open(filename.toLatin1());
     }
     catch (dbexception ex) {
         QMessageBox::critical(this, "BDBVu", ex.what());

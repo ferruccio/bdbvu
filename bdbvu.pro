@@ -25,6 +25,7 @@ HEADERS += mainwindow.h \
     database.h
 FORMS += mainwindow.ui
 DEFINES += HAVE_CXX_STDHEADERS
+QT += widgets
 
 # environment specific settings (OS X)
 osx {

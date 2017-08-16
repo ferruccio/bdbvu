@@ -105,7 +105,7 @@ void database::opensubdb(const QString &dbname)
     closesubdb();
     try {
         sdb = new Db(&env, 0);
-        sdb->open(0, filename.toAscii(), dbname.toAscii(), DB_UNKNOWN, DB_RDONLY | DB_RDWRMASTER, 0);
+        sdb->open(0, filename.toLatin1(), dbname.toLatin1(), DB_UNKNOWN, DB_RDONLY | DB_RDWRMASTER, 0);
         buildKeyList();
     } catch (DbException ex) {
         closesubdb();
@@ -132,7 +132,7 @@ static QString makeVisible(const QString& s) {
     QString r;
     foreach (QChar c, s) {
         if (c != QChar('\n') && (c < QChar(' ') || c > QChar('~')))
-            r.append(QString("\\%1").arg(c.toAscii() & 0xff, 2, 16, QChar('0')));
+            r.append(QString("\\%1").arg(c.toLatin1() & 0xff, 2, 16, QChar('0')));
         else if (c == QChar('\\'))
             r.append("\\\\");
         else
