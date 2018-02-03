@@ -35,7 +35,7 @@ public:
     dbexception(const QString& message) : std::exception() { this->message = message; }
     virtual ~dbexception() throw() {}
 
-    const char* what() const throw() { return message.toAscii(); }
+    const char* what() const throw() { return message.toLatin1(); }
 
 private:
     QString message;
@@ -47,7 +47,7 @@ private:
 class dbkey
 {
 public:
-    QString             display;    // what is displayed to user
+    QString display;    // what is displayed to user
     QString data;
 };
 
