@@ -47,7 +47,7 @@ private:
 class dbkey
 {
 public:
-    QString             display;    // what is displayed to user
+    QString display;    // what is displayed to user
     QString data;
 };
 

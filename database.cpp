@@ -24,7 +24,7 @@ using namespace std;
 
 database::database()
     : sdblist(), keylist(), sdbtype(),
-      env(0), db(0), sdb(0)
+      env((u_int32_t)0), db(0), sdb(0)
 {
     env.open(0, DB_INIT_MPOOL | DB_CREATE | DB_PRIVATE, 0);
 }

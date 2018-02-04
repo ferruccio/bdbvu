@@ -16,6 +16,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with BDBVu.  If not, see <http://www.gnu.org/licenses/>.
 
+QT += core gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = bdbvu
 TEMPLATE = app
 SOURCES += main.cpp \
